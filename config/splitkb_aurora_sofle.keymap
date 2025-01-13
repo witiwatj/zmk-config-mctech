@@ -5,24 +5,111 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
-
-/* Uncomment this block if using RGB
-&led_strip {
-    chain-length = <6>;
-    // chain-length = <35>; // Uncomment if using both per-key and underglow LEDs
-    // chain-length = <29>; // Uncomment if using only per-key LEDs.
-};
- */
-
-#include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 / {
+    {
+
+    behaviors {
+        TD_2: TD_2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_2";
+            #binding-cells = <0>;
+            bindings = <&kp NUMBER_2>, <&kp F2>;
+
+            tapping-term-ms = <100>;
+        };
+
+        TD_0: TD_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_0";
+            #binding-cells = <0>;
+            bindings = <&tog 8>, <&tog 9>;
+
+            tapping-term-ms = <100>;
+        };
+
+        TD_1: TD_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_1";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp LC(BACKSPACE)>;
+
+            tapping-term-ms = <100>;
+        };
+
+        TD_5: TD_5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_5";
+            #binding-cells = <0>;
+            bindings = <&kp N5>, <&kp F5>;
+
+            tapping-term-ms = <100>;
+        };
+
+        TH_2: TH_2 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TH_2";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        alt_F4 {
+            bindings = <&kp RA(F4)>;
+            key-positions = <52 4>;
+        };
+
+        Delete {
+            bindings = <&kp DELETE>;
+            key-positions = <22 23>;
+        };
+
+        equal_plus {
+            bindings = <&kp EQUAL>;
+            key-positions = <9 10>;
+        };
+
+        Backslash {
+            bindings = <&kp BACKSLASH>;
+            key-positions = <20 33>;
+        };
+
+        left_bracklet {
+            bindings = <&kp LEFT_BRACKET>;
+            key-positions = <20 21>;
+        };
+
+        right_bracket {
+            bindings = <&kp RIGHT_BRACKET>;
+            key-positions = <21 22>;
+        };
+
+        ALT_F4 {
+            bindings = <&kp RA(F4)>;
+            key-positions = <4 54>;
+        };
+
+        reset_layer {
+            bindings = <&to 0>;
+            key-positions = <54 55>;
+        };
+
+        To_dota {
+            bindings = <&tog 1>;
+            key-positions = <3 4 5>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -37,16 +124,64 @@
             //               |CTRL | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   | RALT |
 
             bindings = <
-&kp ESC    &kp N1  &kp N2     &kp N3    &kp N4    &kp N5                         &kp N6  &kp N7    &kp N8     &kp N9    &kp N0    &kp GRAVE
-&kp TAB    &kp Q   &kp W      &kp E     &kp R     &kp T                          &kp Y   &kp U     &kp I      &kp O     &kp P     &kp MINUS
-&kp LCTRL  &kp A   &kp S      &kp D     &kp F     &kp G                          &kp H   &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z   &kp X      &kp C     &kp V     &kp B   &kp LBKT     &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                   &kp LCTRL  &kp LALT  &kp LGUI  &mo 1   &kp SPACE    &kp RET   &mo 2   &kp BSPC  &kp RGUI   &kp RALT
+&kp ESC    &kp N1  &TH_2 F2 NUMBER_2  &kp N3        &kp N4        &TH_2 F5 N5                         &kp N6  &kp N7         &kp N8     &kp N9   &kp N0    &TH_2 LC(BACKSPACE) BACKSPACE
+&kp TAB    &kp Q   &kp W              &kp E         &kp R         &kp T                               &kp Y   &kp U          &kp I      &kp O    &kp P     &kp MINUS
+&kp LCTRL  &kp A   &kp S              &kp D         &kp F         &kp G                               &kp H   &kp J          &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X              &kp C         &kp V         &kp B        &kp C_MUTE    &tog 3   &kp N   &kp M          &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                   &kp LCTRL          &kp LEFT_GUI  &kp LEFT_ALT  &mo 4        &kp SPACE     &kp RET  &mo 4   &kp RIGHT_ALT  &kp RGUI   &tog 4
             >;
 
             sensor-bindings =
-                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
-                <&inc_dec_kp 0 0>;
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
+        };
+
+        Dota {
+            bindings = <
+&trans     &trans  &trans  &trans    &trans    &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &trans  &trans    &trans    &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &trans  &trans    &trans    &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &trans  &trans  &trans    &trans    &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                   &trans  &kp LALT  &kp LALT  &kp LALT  &trans    &trans  &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
+
+            label = "DOTA";
+        };
+
+        Arrow {
+            bindings = <
+&trans  &trans          &trans          &trans     &trans  &trans                       &trans  &trans          &trans          &trans          &trans          &trans
+&trans  &trans          &kp UP_ARROW    &trans     &trans  &trans                       &trans  &mkp LCLK       &kp UP_ARROW    &trans          &trans          &trans
+&trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &trans  &trans                       &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT       &kp UP_ARROW    &trans
+&trans  &trans          &trans          &trans     &trans  &trans  &trans    &trans     &trans  &trans          &trans          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
+                        &trans          &trans     &trans  &trans  &trans    &kp SPACE  &trans  &trans          &trans          &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
+
+            label = "ARROW";
+        };
+
+        NUMPAD {
+            bindings = <
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                       &none            &kp KP_DIVIDE    &kp KP_MULTIPLY  &kp KP_SUBTRACT  &kp EQUAL             &trans
+&trans      &trans        &trans        &trans        &trans        &trans                             &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_PLUS      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&trans      &trans        &trans        &trans        &trans        &trans                             &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_PLUS      &kp UP_ARROW          &trans
+&trans      &trans        &trans        &trans        &trans        &trans        &trans    &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp LEFT_ARROW   &kp DOWN_ARROW        &kp RIGHT_ARROW
+                          &trans        &trans        &trans        &trans        &trans    &kp KP_N0  &kp KP_N0        &kp KP_N0        &kp KP_DOT       &kp KP_ENTER
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+
+            label = "NUMPAD";
         };
 
         lower_layer {
@@ -67,9 +202,7 @@
                               &trans             &trans             &trans        &trans        &trans    &trans  &trans     &trans     &trans    &trans
             >;
 
-            sensor-bindings =
-                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
-                <&inc_dec_kp B D>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_layer {
@@ -92,12 +225,6 @@
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
-
-        extra_1 { status = "reserved"; };
-
-        extra_2 { status = "reserved"; };
-
-        extra_3 { status = "reserved"; };
     };
 };
 

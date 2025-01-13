@@ -5,7 +5,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-
+    {
 
     behaviors {
         TD_2: TD_2 {
@@ -58,11 +58,6 @@
     combos {
         compatible = "zmk,combos";
 
-        alt_F4 {
-            bindings = <&kp RA(F4)>;
-            key-positions = <52 4>;
-        };
-
         Delete {
             bindings = <&kp DELETE>;
             key-positions = <22 23>;
@@ -90,7 +85,7 @@
 
         ALT_F4 {
             bindings = <&kp RA(F4)>;
-            key-positions = <4 54>;
+            key-positions = <4 53>;
         };
 
         reset_layer {

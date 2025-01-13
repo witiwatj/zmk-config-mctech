@@ -5,7 +5,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    {
+
 
     behaviors {
         TD_2: TD_2 {

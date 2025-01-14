@@ -212,8 +212,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - EP OFF
+  - EP ON
   - KP 4
   - KP 5
   - KP 6

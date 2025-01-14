@@ -5,6 +5,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
+    
 
     behaviors {
         TD_2: TD_2 {
@@ -102,7 +103,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "BAS";
+            display-name = "BASE";
 
             // ------------------------------------------------------------------------------------------------------------
             // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
@@ -116,7 +117,7 @@
 &kp TAB    &kp Q   &kp W              &kp E         &kp R         &kp T                               &kp Y   &kp U          &kp I      &kp O    &kp P     &kp MINUS
 &kp LCTRL  &kp A   &kp S              &kp D         &kp F         &kp G                               &kp H   &kp J          &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z   &kp X              &kp C         &kp V         &kp B        &kp C_MUTE    &tog 3   &kp N   &kp M          &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                   &kp LCTRL          &kp LEFT_GUI  &kp LEFT_ALT  &mo 4        &kp SPACE     &kp RET  &mo 4   &kp RIGHT_ALT  &kp RGUI   &tog 4
+                   &kp LCTRL          &kp LEFT_GUI  &kp LEFT_ALT  &mo 2        &kp SPACE     &kp RET  &mo 2   &kp RIGHT_ALT  &kp RGUI   &tog 2
             >;
 
             sensor-bindings =

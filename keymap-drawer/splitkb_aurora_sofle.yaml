@@ -127,7 +127,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - Win Close
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -377,8 +377,6 @@ combos:
   k: '['
 - p: [21, 22]
   k: ']'
-- p: [4, 53]
-  k: AltGr+F4
 - p: [54, 55]
   k: {t: BASE, h: toggle}
 - p: [3, 4, 5]

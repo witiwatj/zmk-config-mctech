@@ -5,8 +5,6 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    
-
     behaviors {
         TD_2: TD_2 {
             compatible = "zmk,behavior-tap-dance";
@@ -83,11 +81,6 @@
             key-positions = <21 22>;
         };
 
-        ALT_F4 {
-            bindings = <&kp RA(F4)>;
-            key-positions = <4 53>;
-        };
-
         reset_layer {
             bindings = <&to 0>;
             key-positions = <54 55>;
@@ -143,11 +136,11 @@
 
         Arrow {
             bindings = <
-&trans  &trans          &trans          &trans     &trans  &trans                       &trans  &trans          &trans          &trans          &trans          &trans
-&trans  &trans          &kp UP_ARROW    &trans     &trans  &trans                       &trans  &mkp LCLK       &kp UP_ARROW    &trans          &trans          &trans
-&trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &trans  &trans                       &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT       &kp UP_ARROW    &trans
-&trans  &trans          &trans          &trans     &trans  &trans  &trans    &trans     &trans  &trans          &trans          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
-                        &trans          &trans     &trans  &trans  &trans    &kp SPACE  &trans  &trans          &trans          &trans
+&trans  &trans          &trans          &trans     &kp LA(F4)  &trans                       &trans  &trans          &trans          &trans          &trans          &trans
+&trans  &trans          &kp UP_ARROW    &trans     &trans      &trans                       &trans  &mkp LCLK       &kp UP_ARROW    &trans          &trans          &trans
+&trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &trans      &trans                       &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT       &kp UP_ARROW    &trans
+&trans  &trans          &trans          &trans     &trans      &trans  &trans    &trans     &trans  &trans          &trans          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
+                        &trans          &trans     &trans      &trans  &trans    &kp SPACE  &trans  &trans          &trans          &trans
             >;
 
             sensor-bindings =
